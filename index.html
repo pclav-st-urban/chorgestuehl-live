@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chorgestühl Test: Kompartiment 9</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Chorgestühl Testlauf: Kompartiment 9</h1>
+
+    <div id="gestuehl-skizze">
+        
+        <div class="kompartiment">
+            <h2>Kompartiment 9</h2>
+
+            <div class="relief-rahmen querformat" 
+                 data-titel="Der Hauptmann zu Capernaum" 
+                 data-url="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-28_1.tif/lossy-page1-5400px-CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-28_1.tif.jpg">
+                **Der Hauptmann zu Capernaum**
+            </div>
+
+            <div class="relief-rahmen hochformat" 
+                 data-titel="Noah steigt in die Arche" 
+                 data-url="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-28_2.tif/lossy-page1-3900px-CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-28_2.tif.jpg">
+                **Noah steigt in die Arche**
+            </div>
+
+            <div class="relief-rahmen querformat" 
+                 data-titel="Der Einzug Jesu in Jerusalem" 
+                 data-url="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-28_3.tif/lossy-page1-5400px-CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-28_3.tif.jpg">
+                **Der Einzug Jesu in Jerusalem**
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="lightbox" class="hidden">
+        <div class="lightbox-inhalt">
+            <span class="schliessen-button" onclick="schliesseLightbox()">×</span>
+            <h3 id="relief-titel"></h3>
+            <img id="relief-foto" src="" alt="Detail des Chorgestühls" onclick="schliesseLightbox()">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
