@@ -62,3 +62,20 @@
 }
 
 /* --- Alle Lightbox-Elemente sind ENTFERNT --- */
+/* --- Styles für die Titelseite (index.html) --- */
+
+.nav-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #a0522d; /* Braun */
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.nav-button:hover {
+    background-color: #8b4513; /* Dunkleres Braun beim Hover */
+}
