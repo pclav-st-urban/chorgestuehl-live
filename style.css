@@ -10,7 +10,7 @@
     border: 3px dashed #a0522d; 
     padding: 10px;
     margin-bottom: 20px;
-    width: 400px; /* Breite der Kompartiment-Skizze vergrößert, um Platz für Thumbnails zu schaffen */
+    width: 400px; /* Breite der Kompartiment-Skizze */
 }
 
 .relief-rahmen {
@@ -24,8 +24,8 @@
     
     /* Wichtig: Flexbox für die Thumbnail-Anordnung */
     display: flex;
-    align-items: center; /* Vertikal zentrieren */
-    gap: 10px; /* Abstand zwischen Bild und Text */
+    align-items: center; 
+    gap: 10px; 
 }
 
 .relief-rahmen:hover {
@@ -34,9 +34,9 @@
 
 /* Stil für das Thumbnail-Bild */
 .relief-thumbnail {
-    width: 80px; /* Einheitliche Breite für alle Thumbnails */
+    width: 100px; /* Erhöht für bessere Sichtbarkeit */
     height: auto;
-    object-fit: contain; /* Bildgröße innerhalb des 80px-Bereichs anpassen */
+    object-fit: contain; 
     border: 1px solid #ccc;
     padding: 2px;
 }
@@ -45,16 +45,16 @@
     font-size: 1em; 
     font-weight: bold;
     color: #333;
-    flex-grow: 1; /* Nimmt den restlichen Platz ein */
+    flex-grow: 1; 
 }
 
 /* Die Höhen für die Rahmen können beibehalten werden, steuern jetzt aber den Platz */
 .querformat {
-    min-height: 90px;
+    min-height: 110px; /* Etwas erhöht, um Platz zu schaffen */
 }
 
 .hochformat {
-    min-height: 120px;
+    min-height: 130px; /* Etwas erhöht, um Platz zu schaffen */
 }
 
 /* --- LIGHTBOX (Modal) STYLES --- */
@@ -80,22 +80,28 @@
     position: relative;
     background: white;
     padding: 20px;
-    max-width: 90%; 
-    max-height: 90vh; 
+    max-width: 95%; /* Etwas mehr Platz für das Fenster */
+    max-height: 95vh; 
     text-align: center;
+    
+    /* WICHTIG für den Zoom-Fix auf dem Desktop: */
+    overflow: auto; /* Erzeugt Scrollbalken, wenn das innere Bild zu groß ist */
 }
 
 #relief-foto {
-    max-width: 100%; 
-    max-height: 80vh; 
-    object-fit: contain; 
+    /* WICHTIG: Die Begrenzung auf 100% wird entfernt, damit das Bild in voller Auflösung dargestellt wird */
+    max-width: none; 
+    max-height: none; 
+    width: auto; /* Stellt sicher, dass die native Größe verwendet wird */
+    height: auto;
+    
     display: block;
     margin: 10px auto;
-    cursor: pointer; 
+    cursor: pointer; /* Klick zum Schließen beibehalten */
 }
 
 .schliessen-button {
-    position: absolute;
+    position: fixed; /* Bleibt beim Scrollen an Ort und Stelle */
     top: 10px;
     right: 25px;
     color: #fff; 
