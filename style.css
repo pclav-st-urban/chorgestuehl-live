@@ -7,40 +7,54 @@
 }
 
 .kompartiment {
-    border: 2px solid #333;
+    border: 3px dashed #a0522d; 
     padding: 10px;
     margin-bottom: 20px;
-    width: 300px; /* Breite der Kompartiment-Skizze */
+    width: 400px; /* Breite der Kompartiment-Skizze vergrößert, um Platz für Thumbnails zu schaffen */
 }
 
 .relief-rahmen {
-    border: 1px dashed #666;
-    margin: 5px 0;
-    padding: 10px;
-    text-align: center;
+    border: 2px solid #555; 
+    margin: 10px 0;
+    padding: 5px;
     cursor: pointer;
-    background-color: #f0f0f0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
     transition: background-color 0.2s;
-    font-weight: normal; /* Entbunden, da jetzt im HTML gefettet */
+    
+    /* Wichtig: Flexbox für die Thumbnail-Anordnung */
+    display: flex;
+    align-items: center; /* Vertikal zentrieren */
+    gap: 10px; /* Abstand zwischen Bild und Text */
 }
 
 .relief-rahmen:hover {
-    background-color: #e0e0e0;
+    background-color: #e6e6fa; 
 }
 
-/* Anpassung der Rahmenhöhen an die Formate */
+/* Stil für das Thumbnail-Bild */
+.relief-thumbnail {
+    width: 80px; /* Einheitliche Breite für alle Thumbnails */
+    height: auto;
+    object-fit: contain; /* Bildgröße innerhalb des 80px-Bereichs anpassen */
+    border: 1px solid #ccc;
+    padding: 2px;
+}
+
+.relief-titel-text {
+    font-size: 1em; 
+    font-weight: bold;
+    color: #333;
+    flex-grow: 1; /* Nimmt den restlichen Platz ein */
+}
+
+/* Die Höhen für die Rahmen können beibehalten werden, steuern jetzt aber den Platz */
 .querformat {
-    height: 80px; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-height: 90px;
 }
 
 .hochformat {
-    height: 120px; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-height: 120px;
 }
 
 /* --- LIGHTBOX (Modal) STYLES --- */
@@ -72,12 +86,10 @@
 }
 
 #relief-foto {
-    /* WICHTIG: Maximale Bildgröße im Lightbox-Fenster */
     max-width: 100%; 
     max-height: 80vh; 
-    
-    /* WICHTIG: Passt Hoch- und Querformate automatisch an den Container an */
-    **object-fit: contain;** display: block;
+    object-fit: contain; 
+    display: block;
     margin: 10px auto;
     cursor: pointer; 
 }
