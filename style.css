@@ -1,62 +1,3 @@
-/* Grundlegendes Layout für die Skizze */
-#gestuehl-skizze {
-    display: flex;
-    flex-wrap: wrap; 
-    gap: 20px;
-    padding: 20px;
-}
-
-.kompartiment {
-    border: 3px dashed #a0522d; 
-    padding: 10px;
-    margin-bottom: 20px;
-    width: 400px; /* Breite der Kompartiment-Skizze */
-}
-
-.relief-rahmen {
-    border: 2px solid #555; 
-    margin: 10px 0;
-    padding: 5px;
-    cursor: pointer;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    transition: background-color 0.2s;
-    
-    /* Wichtig: Flexbox für die Thumbnail-Anordnung */
-    display: flex;
-    align-items: center; 
-    gap: 10px; 
-}
-
-.relief-rahmen:hover {
-    background-color: #e6e6fa; 
-}
-
-/* Stil für das Thumbnail-Bild */
-.relief-thumbnail {
-    width: 100px; /* Erhöht für bessere Sichtbarkeit */
-    height: auto;
-    object-fit: contain; 
-    border: 1px solid #ccc;
-    padding: 2px;
-}
-
-.relief-titel-text {
-    font-size: 1em; 
-    font-weight: bold;
-    color: #333;
-    flex-grow: 1; 
-}
-
-/* Die Höhen für die Rahmen können beibehalten werden, steuern jetzt aber den Platz */
-.querformat {
-    min-height: 110px; /* Etwas erhöht, um Platz zu schaffen */
-}
-
-.hochformat {
-    min-height: 130px; /* Etwas erhöht, um Platz zu schaffen */
-}
-
 /* --- LIGHTBOX (Modal) STYLES --- */
 
 #lightbox {
@@ -70,6 +11,8 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    /* WICHTIG: Erlaubt das Vergrössern der Seite auf Mobilgeräten */
+    touch-action: manipulation; 
 }
 
 .hidden {
@@ -80,28 +23,34 @@
     position: relative;
     background: white;
     padding: 20px;
-    max-width: 95%; /* Etwas mehr Platz für das Fenster */
+    max-width: 95%; 
     max-height: 95vh; 
     text-align: center;
-    
-    /* WICHTIG für den Zoom-Fix auf dem Desktop: */
-    overflow: auto; /* Erzeugt Scrollbalken, wenn das innere Bild zu groß ist */
+    overflow: hidden; /* Verhindert Scrollbalken der Lightbox selbst */
 }
 
 #relief-foto {
-    /* WICHTIG: Die Begrenzung auf 100% wird entfernt, damit das Bild in voller Auflösung dargestellt wird */
-    max-width: none; 
-    max-height: none; 
-    width: auto; /* Stellt sicher, dass die native Größe verwendet wird */
-    height: auto;
+    /* WICHTIG: Behält die Übersicht: Bild passt immer in den Rahmen */
+    max-width: 100%; 
+    max-height: 80vh; 
+    
+    /* Passt Hoch- und Querformate optimal in den Container an */
+    object-fit: contain; 
     
     display: block;
     margin: 10px auto;
-    cursor: pointer; /* Klick zum Schließen beibehalten */
+    cursor: pointer; 
+    
+    /* WICHTIG: Erlaubt Browser-Zoom (Strg+Mausrad / Lupe) auf dem Laptop */
+    max-width: initial !important; /* Überschreibt alle Max-Breiten */
+    
+    /* Entfernt die unnötige feste Größendefinition */
+    width: auto; 
+    height: auto;
 }
 
 .schliessen-button {
-    position: fixed; /* Bleibt beim Scrollen an Ort und Stelle */
+    position: fixed; 
     top: 10px;
     right: 25px;
     color: #fff; 
@@ -110,6 +59,7 @@
     cursor: pointer;
     z-index: 1001; 
 }
+
 @media (max-width: 600px) {
     .schliessen-button {
         top: 0;
