@@ -1,54 +1,87 @@
+/* Globale Stile und Typografie */
+body {
+    font-family: 'Times New Roman', Times, serif; /* Klassische Serif-Schrift */
+    background-color: #f8f8f4; /* Hellbeiger/Cremefarbener Hintergrund (Papier/Stein) */
+    color: #4e342e; /* Dunkelbraune Schriftfarbe (Sepia/Holz) */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #4e342e;
+    border-bottom: 2px solid #a0522d; /* Sienna-Linie unter Überschriften */
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+header {
+    background-color: #edeae3; /* Etwas dunklerer Header-Hintergrund */
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Leichter Schatten */
+}
+
+p, a {
+    color: #4e342e;
+}
+
 /* Grundlegendes Layout für die Skizze */
 #gestuehl-skizze {
     display: flex;
     flex-wrap: wrap; 
-    gap: 20px;
-    padding: 20px;
+    gap: 30px; /* Mehr Abstand */
+    padding: 30px;
 }
 
 .kompartiment {
-    border: 3px dashed #a0522d; 
-    padding: 10px;
+    border: 1px solid #c0b9a9; /* Subtile, feste Linie */
+    background-color: #fffdfa; /* Sehr helles Weiß für den Kompartiment-Bereich */
+    padding: 20px;
     margin-bottom: 20px;
-    width: 450px; /* Leicht verbreitert, um 200px Platz zu geben */
+    width: 450px; 
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* Leichte Vertiefung */
 }
 
-/* Wichtig: .relief-rahmen ist jetzt ein <a> Tag */
+/* Wichtig: .relief-rahmen ist jetzt ein <a> Tag (Rahmen um Thumbnail + Titel) */
 .relief-rahmen {
-    display: flex; /* Hält Thumbnail und Text nebeneinander */
+    display: flex;
     align-items: center; 
-    gap: 15px; /* Etwas mehr Abstand */
-
-    /* Link-Standard-Styles entfernen */
+    gap: 15px; 
     text-decoration: none; 
 
     /* Rahmen-Styles */
-    border: 2px solid #555; 
-    margin: 10px 0;
-    padding: 5px;
+    border: 3px solid #a0522d; /* Kräftigerer Holzrahmen-Effekt */
+    border-radius: 4px; 
+    margin: 15px 0;
+    padding: 8px;
     cursor: pointer;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    transition: background-color 0.2s;
+    background-color: #fcfcfc;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); 
+    transition: all 0.2s ease-in-out;
 }
 
 .relief-rahmen:hover {
-    background-color: #e6e6fa; 
+    background-color: #f0ebe2; /* Hellerer Hover-Effekt */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transform: translateY(-1px); /* Leichter 3D-Effekt beim Hover */
 }
 
 /* Stil für das Thumbnail-Bild */
 .relief-thumbnail {
-    width: 200px; /* FINALE GRÖSSE für bessere Detailerkennung */
+    width: 200px; 
     height: auto;
     object-fit: contain; 
-    border: 1px solid #ccc;
+    border: 1px solid #795548; /* Dunklerer Rand für das Bild */
     padding: 2px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .relief-titel-text {
-    font-size: 1.1em; /* Schrift etwas größer */
+    font-size: 1.1em;
     font-weight: bold;
-    color: #333; /* Textfarbe auf dunkel ändern (nicht blauer Link) */
+    color: #4e342e; 
     flex-grow: 1; 
 }
 
@@ -61,21 +94,52 @@
     min-height: 220px; 
 }
 
-/* --- Alle Lightbox-Elemente sind ENTFERNT --- */
+
 /* --- Styles für die Titelseite (index.html) --- */
 
 .nav-button {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #a0522d; /* Braun */
+    padding: 12px 25px;
+    background-color: #795548; /* Mittelbraun */
     color: white;
     text-decoration: none;
     font-size: 1.1em;
-    border-radius: 5px;
+    border-radius: 4px;
     transition: background-color 0.3s;
     font-weight: bold;
+    letter-spacing: 0.5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .nav-button:hover {
-    background-color: #8b4513; /* Dunkleres Braun beim Hover */
+    background-color: #a0522d; /* Sienna beim Hover */
+}
+
+
+/* --- Styles für die Kompartiment-Übersichtsseiten (nord.html/sued.html) --- */
+
+.kompartiment-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 110px; /* Breite der Boxen leicht vergrößert */
+    height: 70px; /* Höhe der Boxen leicht vergrößert */
+    border: 1px solid #a0522d;
+    background-color: #fffdfa; /* Sehr helles Hintergrund */
+    color: #4e342e;
+    text-decoration: none;
+    font-size: 1.3em;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: all 0.3s;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.kompartiment-link:hover {
+    background-color: #a0522d;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+}
+}
 }
