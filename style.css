@@ -38,7 +38,7 @@
 
 /* Stil für das Thumbnail-Bild */
 .relief-thumbnail {
-    width: 200px; /* VERGRÖSSERT für bessere Detailerkennung */
+    width: 200px; /* FINALE GRÖSSE für bessere Detailerkennung */
     height: auto;
     object-fit: contain; 
     border: 1px solid #ccc;
@@ -46,9 +46,9 @@
 }
 
 .relief-titel-text {
-    font-size: 1.1em; 
+    font-size: 1.1em; /* Schrift etwas größer */
     font-weight: bold;
-    color: #333; 
+    color: #333; /* Textfarbe auf dunkel ändern (nicht blauer Link) */
     flex-grow: 1; 
 }
 
@@ -61,4 +61,4 @@
     min-height: 220px; 
 }
 
-/* --- Alle LIGHTBOX (Modal) STYLES wurden ENTFERNT --- */
+/* --- Alle Lightbox-Elemente sind ENTFERNT --- */
