@@ -27,80 +27,11 @@ p, a {
     color: #4e342e;
 }
 
-/* Grundlegendes Layout für die Skizze */
-#gestuehl-skizze {
-    display: flex;
-    flex-wrap: wrap; 
-    gap: 30px; /* Mehr Abstand */
-    padding: 30px;
-}
-
-.kompartiment {
-    border: 1px solid #c0b9a9; /* Subtile, feste Linie */
-    background-color: #fffdfa; /* Sehr helles Weiß für den Kompartiment-Bereich */
-    padding: 20px;
-    margin-bottom: 20px;
-    width: 450px; 
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* Leichte Vertiefung */
-}
-
-/* Wichtig: .relief-rahmen ist jetzt ein <a> Tag (Rahmen um Thumbnail + Titel) */
-.relief-rahmen {
-    display: flex;
-    align-items: center; 
-    gap: 15px; 
-    text-decoration: none; 
-
-    /* Rahmen-Styles */
-    border: 3px solid #a0522d; /* Kräftigerer Holzrahmen-Effekt */
-    border-radius: 4px; 
-    margin: 15px 0;
-    padding: 8px;
-    cursor: pointer;
-    background-color: #fcfcfc;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); 
-    transition: all 0.2s ease-in-out;
-}
-
-.relief-rahmen:hover {
-    background-color: #f0ebe2; /* Hellerer Hover-Effekt */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-    transform: translateY(-1px); /* Leichter 3D-Effekt beim Hover */
-}
-
-/* Stil für das Thumbnail-Bild */
-.relief-thumbnail {
-    width: 200px; 
-    height: auto;
-    object-fit: contain; 
-    border: 1px solid #795548; /* Dunklerer Rand für das Bild */
-    padding: 2px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.relief-titel-text {
-    font-size: 1.1em;
-    font-weight: bold;
-    color: #4e342e; 
-    flex-grow: 1; 
-}
-
-/* Anpassung der Rahmenhöhen an die 200px Thumbnails */
-.querformat {
-    min-height: 180px; 
-}
-
-.hochformat {
-    min-height: 220px; 
-}
-
-
 /* --- Styles für die Titelseite (index.html) --- */
-
 .nav-button {
     display: inline-block;
     padding: 12px 25px;
-    background-color: #795548; /* Mittelbraun */
+    background-color: #795548; 
     color: white;
     text-decoration: none;
     font-size: 1.1em;
@@ -112,20 +43,18 @@ p, a {
 }
 
 .nav-button:hover {
-    background-color: #a0522d; /* Sienna beim Hover */
+    background-color: #a0522d;
 }
 
-
 /* --- Styles für die Kompartiment-Übersichtsseiten (nord.html/sued.html) --- */
-
 .kompartiment-link {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 110px; /* Breite der Boxen leicht vergrößert */
-    height: 70px; /* Höhe der Boxen leicht vergrößert */
+    width: 110px; 
+    height: 70px; 
     border: 1px solid #a0522d;
-    background-color: #fffdfa; /* Sehr helles Hintergrund */
+    background-color: #fffdfa;
     color: #4e342e;
     text-decoration: none;
     font-size: 1.3em;
@@ -141,5 +70,108 @@ p, a {
     transform: translateY(-2px);
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
 }
+
+/* --- NEUE STYLES FÜR DAS A4-QUERFORMAT-LAYOUT (Kompartiment-Seiten) --- */
+
+#kompartiment-container {
+    padding: 20px;
+    display: flex;
+    justify-content: center; /* Zentriert den A4-Querformat-Bereich */
 }
+
+.kompartiment-a4-quer {
+    /* Simuliert A4 Querformat Breite auf Desktop */
+    width: 900px; 
+    max-width: 95vw; /* Passt sich auf kleineren Bildschirmen an */
+    min-height: 600px;
+    padding: 30px;
+    background-color: #fffdfa;
+    border: 3px solid #795548; /* Kräftiger Rahmen */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Starker Schatten */
+}
+
+.kompartiment-grid {
+    display: grid;
+    /* 3 Spalten: Text (25%), Relief (50%), Text (25%) */
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto 1fr auto; /* Oben, Mitte, Unten */
+    gap: 15px;
+    height: 100%;
+}
+
+/* Allgemeine Styles für alle Bereiche im Grid */
+.grid-box {
+    padding: 10px;
+    /* Optional: Hintergrund, um Boxen zu visualisieren */
+    /* background-color: #f0f0f0; */ 
+    border-radius: 4px;
+}
+
+/* Positionierung der Elemente gemäß Ihrer Skizze */
+.grid-titel {
+    grid-area: 1 / 2 / 2 / 3; /* Erste Zeile, mittlere Spalte */
+    text-align: center;
+}
+.grid-text-oben-links {
+    grid-area: 1 / 1 / 2 / 2; /* Erste Zeile, linke Spalte */
+}
+.grid-text-oben-rechts {
+    grid-area: 1 / 3 / 2 / 4; /* Erste Zeile, rechte Spalte */
+}
+
+/* Relief-Rahmen in der Mitte (2. Zeile) */
+.grid-relief-mitte {
+    grid-area: 2 / 2 / 3 / 3; /* Zweite Zeile, mittlere Spalte (nimmt vollen Platz ein) */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.grid-text-mitte-links {
+    grid-area: 2 / 1 / 3 / 2; /* Zweite Zeile, linke Spalte */
+}
+.grid-text-mitte-rechts {
+    grid-area: 2 / 3 / 3 / 4; /* Zweite Zeile, rechte Spalte */
+}
+
+/* Untere Text- und Relief-Bereiche (3. Zeile) */
+.grid-text-unten-links {
+    grid-area: 3 / 1 / 4 / 2; /* Dritte Zeile, linke Spalte */
+}
+.grid-text-unten-rechts {
+    grid-area: 3 / 3 / 4 / 4; /* Dritte Zeile, rechte Spalte */
+}
+
+/* Styling der Relief-Elemente im Grid */
+.relief-rahmen-grid {
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    text-decoration: none; 
+    border: 2px solid #a0522d; 
+    padding: 5px;
+    margin: 5px 0;
+    cursor: pointer;
+    background-color: #f7f3ed;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); 
+    transition: all 0.2s ease-in-out;
+}
+
+.relief-rahmen-grid:hover {
+    background-color: #f0ebe2;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+}
+
+.relief-thumbnail-grid {
+    width: 150px; /* Kleinere Thumbnails für das A4-Querformat */
+    height: auto;
+    object-fit: contain; 
+    border: 1px solid #795548;
+}
+
+.relief-titel-text-grid {
+    font-size: 1em;
+    font-weight: bold;
+    color: #4e342e; 
+    flex-grow: 1; 
 }
