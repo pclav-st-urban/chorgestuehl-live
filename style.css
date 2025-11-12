@@ -79,19 +79,17 @@ p, a {
 }
 
 .kompartiment-a4-quer {
-    /* FIX: Feste Breite und Höhe für echtes Querformat (Höhe ist jetzt fixiert) */
     width: 950px; 
-    height: 650px; /* FIX: Fixierte Höhe für Kontrolle */
+    height: 650px;
     max-width: 95vw;
-    position: relative; /* Für absolute Positionierung des Zurück-Buttons */
+    position: relative;
     padding: 30px;
     background-color: #fffdfa;
     border: 3px solid #795548;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    box-sizing: border-box; /* Padding wird in die 650px eingerechnet */
+    box-sizing: border-box;
 }
 
-/* FIX: Positionierung des Zurück-Buttons */
 .zurueck-button {
     position: absolute;
     top: 10px;
@@ -102,46 +100,36 @@ p, a {
 
 .kompartiment-grid {
     display: grid;
-    /* FIX: Gleichmäßigere Spaltenbreiten */
     grid-template-columns: 2fr 3fr 2fr;
-    /* 3 Reihen, die den verbleibenden Platz gleichmäßig teilen */
     grid-template-rows: 1fr 1fr 1fr; 
     gap: 15px 25px; 
-    /* FIX: Grid nutzt den gesamten verfügbaren Raum im Container */
-    height: calc(100% - 30px); /* 30px Abzug für den Zurück-Button */
+    height: calc(100% - 30px);
 }
 
 /* Allgemeine Styles für alle Bereiche im Grid */
 .grid-box {
     padding: 0;
     border-radius: 4px;
-    /* FIX: Alle Grid-Boxen erhalten einen Rahmen */
     border: 1px solid #c0b9a9; 
     box-sizing: border-box;
-    /* FIX: Verhindert, dass Text über den Grid-Bereich hinausragt */
     overflow: hidden; 
 }
 
-/* FIX: Linker Bereich: Titel und Gebrauchsanweisung (sitzt exakt neben Relief Mitte) */
+/* Linker Bereich: Titel und Gebrauchsanweisung */
 .grid-titel-anweisung-links {
     grid-area: 2 / 1 / 3 / 2; 
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Vertikal zentriert innerhalb der Zelle */
+    justify-content: center; 
     align-items: center;
     text-align: center;
 }
 
-/* FIX: Präzise Platzierung der Reliefs und rechten Textfelder in den 3 Zeilen */
-/* ------------------- ZEILE 1: Relief Oben ------------------- */
+/* Präzise Platzierung der Reliefs und rechten Textfelder in den 3 Zeilen (Unverändert) */
 .grid-relief-oben { grid-area: 1 / 2 / 2 / 3; }
 .grid-text-rechts-oben { grid-area: 1 / 3 / 2 / 4; }
-
-/* ------------------- ZEILE 2: Relief Mitte ------------------- */
 .grid-relief-mitte { grid-area: 2 / 2 / 3 / 3; }
 .grid-text-rechts-mitte { grid-area: 2 / 3 / 3 / 4; }
-
-/* ------------------- ZEILE 3: Relief Unten ------------------- */
 .grid-relief-unten { grid-area: 3 / 2 / 4 / 3; }
 .grid-text-rechts-unten { grid-area: 3 / 3 / 4 / 4; }
 
@@ -152,13 +140,13 @@ p, a {
     justify-content: center;
     align-items: center; 
     text-decoration: none; 
-    border: none; /* Rahmen ist nun auf der Grid-Box */
+    border: none;
     padding: 5px;
     cursor: pointer;
     background-color: #f7f3ed;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); 
     transition: all 0.2s ease-in-out;
-    height: 100%; /* FIX: Nutzt 100% der Grid-Zellenhöhe */
+    height: 100%; 
     box-sizing: border-box;
 }
 
@@ -169,17 +157,18 @@ p, a {
 
 .relief-thumbnail-grid {
     width: 100%; 
-    height: 100%; 
-    /* FIX: object-fit: cover entfernt die hässlichen Streifen */
-    object-fit: cover; 
+    max-height: 100%; /* FIX: Maximalhöhe begrenzt durch die Zelle */
+    height: auto; /* FIX: Höhe ist nicht mehr 100% fix, sondern auto */
+    /* FIX: object-fit: contain stellt das Seitenverhältnis wieder her */
+    object-fit: contain; 
     border: 1px solid #795548;
 }
 
-/* Styling der Textboxen */
+/* Styling der Textboxen (Unverändert) */
 .text-box-inner {
     padding: 10px;
     background-color: #fffdfa;
-    border: none; /* Gestrichelter Rahmen entfernt, da die Grid-Box den Rahmen hat */
-    height: 100%; /* FIX: Füllt die Grid-Box aus */
-    overflow: auto; /* Erlaubt Scrollen, falls Text zu lang ist */
+    border: none;
+    height: 100%; 
+    overflow: auto; 
 }
