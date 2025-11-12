@@ -79,9 +79,11 @@ p, a {
 }
 
 .kompartiment-a4-quer {
+    /* FIX: Höhe ist nicht mehr fix, sondern passt sich dem Inhalt an, bleibt aber quer-lastig */
     width: 950px; 
-    height: 650px;
     max-width: 95vw;
+    height: auto; /* WICHTIG: Erlaubt dem Container, sich der Bildhöhe anzupassen */
+    min-height: 650px; /* Garantiert Mindesthöhe */
     position: relative;
     padding: 30px;
     background-color: #fffdfa;
@@ -100,10 +102,13 @@ p, a {
 
 .kompartiment-grid {
     display: grid;
+    /* Spalten wie gewünscht */
     grid-template-columns: 2fr 3fr 2fr;
-    grid-template-rows: 1fr 1fr 1fr; 
+    /* FIX: Reihenhöhe passt sich dem Inhalt (den Bildern) an */
+    grid-template-rows: auto auto auto; 
     gap: 15px 25px; 
-    height: calc(100% - 30px);
+    /* Die Höhe muss flexibel sein, damit die Bilder ihre wahre Größe zeigen */
+    height: 100%; 
 }
 
 /* Allgemeine Styles für alle Bereiche im Grid */
@@ -112,17 +117,23 @@ p, a {
     border-radius: 4px;
     border: 1px solid #c0b9a9; 
     box-sizing: border-box;
+    /* FLEXBOX für Textzellen: Stellt sicher, dass der Text vertikal ausgerichtet werden kann, falls die Bilder variieren */
+    display: flex;
+    flex-direction: column;
     overflow: hidden; 
 }
 
 /* Linker Bereich: Titel und Gebrauchsanweisung */
 .grid-titel-anweisung-links {
     grid-area: 2 / 1 / 3 / 2; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
+    justify-content: center; /* Vertikal zentriert innerhalb der Zelle */
     align-items: center;
     text-align: center;
+}
+
+/* Textfelder rechts: Ausrichtung der Inhalte innerhalb der Grid-Box */
+.grid-text-rechts-oben, .grid-text-rechts-mitte, .grid-text-rechts-unten {
+    justify-content: flex-start;
 }
 
 /* Präzise Platzierung der Reliefs und rechten Textfelder in den 3 Zeilen (Unverändert) */
@@ -156,10 +167,10 @@ p, a {
 }
 
 .relief-thumbnail-grid {
+    /* FIX: Bildbreite ist 100% der zugewiesenen Spalte */
     width: 100%; 
-    max-height: 100%; /* FIX: Maximalhöhe begrenzt durch die Zelle */
-    height: auto; /* FIX: Höhe ist nicht mehr 100% fix, sondern auto */
-    /* FIX: object-fit: contain stellt das Seitenverhältnis wieder her */
+    height: auto; /* FIX: Höhe ergibt sich automatisch aus dem Seitenverhältnis */
+    max-height: none; 
     object-fit: contain; 
     border: 1px solid #795548;
 }
