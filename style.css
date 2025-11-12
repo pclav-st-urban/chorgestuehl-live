@@ -1,4 +1,4 @@
-/* Globale Stile und Typografie */
+/* Globale Stile und Typografie (Unverändert) */
 body {
     font-family: 'Times New Roman', Times, serif;
     background-color: #f8f8f4;
@@ -8,7 +8,7 @@ body {
     padding: 0;
 }
 
-h1, h2, h3 { /* h3 hinzugefügt für Texte im Grid */
+h1, h2, h3 {
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: #4e342e;
     border-bottom: 2px solid #a0522d;
@@ -27,7 +27,7 @@ p, a {
     color: #4e342e;
 }
 
-/* --- Styles für die Titelseite und Übersichten (unverändert) --- */
+/* --- Styles für die Titelseite und Übersichten (Unverändert) --- */
 .nav-button {
     display: inline-block;
     padding: 12px 25px;
@@ -79,8 +79,7 @@ p, a {
 }
 
 .kompartiment-a4-quer {
-    /* FIX: Feste, große Breite für A4 Querformat auf Desktop */
-    width: 900px;
+    width: 950px; 
     max-width: 95vw;
     min-height: 600px;
     padding: 30px;
@@ -91,64 +90,58 @@ p, a {
 
 .kompartiment-grid {
     display: grid;
-    /* FIX: 3 Spalten definiert: Text (25%), Relief (50%), Text (25%) */
-    grid-template-columns: 1fr 2fr 1fr;
-    /* FIX: 4 Reihen definiert: 1 für Titel, 3 für die Reliefs, die vertikal fixiert sind */
-    grid-template-rows: auto 1fr 1fr 1fr; 
-    gap: 15px;
+    /* 3 Spalten definiert: Links (1.5fr), Relief (3fr), Rechts (1.5fr) */
+    grid-template-columns: 1.5fr 3fr 1.5fr;
+    /* FIX: 3 Reihen definiert, eine für jedes Relief */
+    grid-template-rows: 1fr 1fr 1fr; 
+    gap: 10px 20px; 
     height: 100%;
 }
 
 /* Allgemeine Styles für alle Bereiche im Grid */
 .grid-box {
-    padding: 10px;
+    padding: 0;
     border-radius: 4px;
-    /* Stellt sicher, dass der Text die volle Höhe der Zelle nutzt */
+}
+
+/* FIX: Linker Bereich: Titel und Gebrauchsanweisung (JETZT NUR IN ZEILE 2) */
+.grid-titel-anweisung-links {
+    grid-area: 2 / 1 / 3 / 2; /* Startet Z2, Sp1 und endet Z3, Sp2 (sitzt exakt neben Relief Mitte) */
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; 
-}
-
-/* FIX: Titelbereich über alle 3 Spalten */
-.grid-titel-bereich {
-    grid-area: 1 / 1 / 2 / 4; 
+    justify-content: center; /* Vertikal zentriert innerhalb der Zelle */
+    align-items: center;
     text-align: center;
-    border-bottom: 2px solid #a0522d;
-    padding-bottom: 10px;
 }
 
-/* FIX: Präzise Platzierung von Reliefs und Textfeldern in den Zeilen 2, 3 und 4 */
+/* FIX: Präzise Platzierung der Reliefs und rechten Textfelder in den 3 Zeilen */
+/* ------------------- ZEILE 1: Relief Oben ------------------- */
+.grid-relief-oben { grid-area: 1 / 2 / 2 / 3; }
+.grid-text-rechts-oben { grid-area: 1 / 3 / 2 / 4; }
 
-/* ------------------- ZEILE 2: Relief Oben ------------------- */
-.grid-relief-oben { grid-area: 2 / 2 / 3 / 3; }
-.grid-text-links-oben { grid-area: 2 / 1 / 3 / 2; }
-.grid-text-rechts-oben { grid-area: 2 / 3 / 3 / 4; }
+/* ------------------- ZEILE 2: Relief Mitte ------------------- */
+.grid-relief-mitte { grid-area: 2 / 2 / 3 / 3; }
+.grid-text-rechts-mitte { grid-area: 2 / 3 / 3 / 4; }
 
-/* ------------------- ZEILE 3: Relief Mitte ------------------- */
-.grid-relief-mitte { grid-area: 3 / 2 / 4 / 3; }
-.grid-text-links-mitte { grid-area: 3 / 1 / 4 / 2; }
-.grid-text-rechts-mitte { grid-area: 3 / 3 / 4 / 4; }
-
-/* ------------------- ZEILE 4: Relief Unten ------------------- */
-.grid-relief-unten { grid-area: 4 / 2 / 5 / 3; }
-.grid-text-links-unten { grid-area: 4 / 1 / 5 / 2; }
-.grid-text-rechts-unten { grid-area: 4 / 3 / 5 / 4; }
+/* ------------------- ZEILE 3: Relief Unten ------------------- */
+.grid-relief-unten { grid-area: 3 / 2 / 4 / 3; }
+.grid-text-rechts-unten { grid-area: 3 / 3 / 4 / 4; }
 
 
-/* Styling der Relief-Elemente im Grid */
+/* Styling der Relief-Elemente im Grid (Unverändert) */
 .relief-rahmen-grid {
     display: flex; 
+    justify-content: center;
     align-items: center; 
-    /* FIX: Entfernt den Relief-Titel aus dem anklickbaren Bereich */
-    justify-content: center; 
     text-decoration: none; 
     border: 2px solid #a0522d; 
-    padding: 5px;
+    padding: 10px;
     margin: 5px 0;
     cursor: pointer;
     background-color: #f7f3ed;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); 
     transition: all 0.2s ease-in-out;
+    height: 90%; 
 }
 
 .relief-rahmen-grid:hover {
@@ -157,14 +150,27 @@ p, a {
 }
 
 .relief-thumbnail-grid {
-    width: 100%; /* FIX: Stellt sicher, dass das Bild die volle Breite der Grid-Zelle nutzt */
+    width: 95%; 
+    max-height: 95%; 
     height: auto;
-    max-width: 350px; /* Begrenzt die Bildgröße, damit sie nicht zu dominant wird */
     object-fit: contain; 
     border: 1px solid #795548;
 }
 
-/* Der Titeltext ist nun NICHT MEHR in der anklickbaren Box */
-.relief-titel-text-grid {
-    display: none !important; 
+.text-box-inner {
+    padding: 10px;
+    background-color: #fffdfa;
+    border: 1px dashed #c0b9a9;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.text-box-inner h3 {
+    border: none;
+    margin-bottom: 5px;
+    padding-bottom: 0;
+    font-size: 1em;
+    font-weight: bold;
 }
