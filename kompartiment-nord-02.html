@@ -19,11 +19,24 @@
             <div class="kompartiment-grid">
                 
                 <div class="grid-box grid-titel-anweisung-links">
-                    <div class="text-box-inner" style="border: 2px solid #4e342e;"> 
-                        <h3>Gebrauchsanleitung</h3>
-                        <p>Vergrösserung: Bild anklicken oder antippen. Die grosse Foto lässt sich bis zur Wurmloch-Dimension vergrössern. Zurück zur Übersicht des Kompartiments: Löschen des Reiters/Tabulators bzw. mit «Zurück-Pfeil».</p>
+                    <div class="text-box-inner" style="
+                        /* WICHTIG: Stabile Grenzwerte zurückgegeben */
+                        border: 2px solid #4e342e; 
+                        padding: 20px;
+                        width: 90%;
+                        height: 90%; 
+                        justify-content: center;
+                        align-items: center;
+                        overflow: auto; 
+                        /* Entfernt das unnötige Padding der inneren Box */
+                        padding-top: 5px; 
+                        padding-bottom: 5px; 
+                    "> 
+                        <h3 style="font-size: 1.05em; margin-top: 0; margin-bottom: 8px; border-bottom: 1px solid #916341; padding-bottom: 3px;">Gebrauchsanleitung</h3>
                         
-                        <p><strong>Ausführliche Anleitung:</strong> <a href="Gebrauchsanleitung.docx" target="_blank">Gebrauchsanleitung.docx</a></p>
+                        <p style="font-size: 0.9em; line-height: 1.4; margin-top: 5px; margin-bottom: 5px;">Vergrösserung: Bild anklicken oder antippen. Die grosse Foto lässt sich bis zur Wurmloch-Dimension vergrössern. Zurück zur Übersicht des Kompartiments: Löschen des Reiters/Tabulators bzw. mit «Zurück-Pfeil».</p>
+                        
+                        <p style="font-size: 0.9em; line-height: 1.4; margin-top: 5px; margin-bottom: 5px;"><strong>Ausführliche Anleitung:</strong> <a href="Gebrauchsanleitung.docx" target="_blank">Gebrauchsanleitung.docx</a></p>
                     </div>
                 </div>
 
