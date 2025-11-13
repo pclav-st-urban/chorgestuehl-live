@@ -1,4 +1,4 @@
-/* Globale Stile und Typografie (unverändert) */
+/* Globale Stile und Typografie */
 body {
     font-family: 'Times New Roman', Times, serif;
     background-color: #e5d7cf; 
@@ -7,9 +7,52 @@ body {
     margin: 0;
     padding: 0;
 }
-/* ... (Restliche allgemeine Stile) ... */
 
-/* --- Layout für Kompartiment-Seiten (Stabilität Fixiert) --- */
+h1, h2, h3 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #4e342e;
+    border-bottom: 2px solid #916341; 
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+header {
+    background-color: #916341; 
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: white; 
+}
+
+header h1 {
+    color: white;
+    border-bottom-color: white;
+}
+
+p, a {
+    color: #4e342e;
+}
+
+/* --- Navigation (Eingangsseite FIX) --- */
+.nav-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #b5886d; 
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.nav-button:hover {
+    background-color: #916341; 
+}
+
+/* --- Layout für Kompartiment-Seiten --- */
 
 #kompartiment-container {
     padding: 20px;
@@ -18,7 +61,6 @@ body {
 }
 
 .kompartiment-a4-quer {
-    /* Feste Höhe, um Überhang zu verhindern */
     width: 950px; 
     max-width: 95vw;
     height: 650px; 
@@ -31,26 +73,30 @@ body {
     overflow: hidden; 
 }
 
-/* ... Zurück-Button unverändert ... */
+.zurueck-button {
+    position: absolute;
+    top: 5px; 
+    left: 5px;
+    font-size: 0.9em;
+}
+.zurueck-button a {
+    color: #4e342e;
+}
 
-/* --- Grid-Struktur --- */
+/* --- Grid-Struktur (ULTIMATIVER FIX mit Grid Areas) --- */
 .kompartiment-grid {
     display: grid;
-    /* Spalten: 2fr (links) | 3fr (Mitte Reliefs) | 2fr (Rechts Texte) */
     grid-template-columns: 2fr 3fr 2fr;
-    
-    /* FIX: Definiert die Grid-Struktur mit Namen, um die Positionen zu erzwingen */
     grid-template-areas:
         "leer relief-oben text-oben"
         "anweisung relief-mitte text-mitte"
         "leer relief-unten text-unten";
-        
     grid-template-rows: 1fr 2fr 1fr; /* Proportionale Reihenhöhen für 1:2:1 Bildverhältnis */
     gap: 15px 25px; 
     height: calc(100% - 30px); 
 }
 
-/* FIX: Zuweisung der Bereiche zu den Grid-Area-Namen */
+/* Zuweisung der Bereiche zu den Grid-Area-Namen */
 .grid-titel-anweisung-links { grid-area: anweisung; }
 .grid-relief-oben { grid-area: relief-oben; }
 .grid-text-rechts-oben { grid-area: text-oben; }
@@ -60,7 +106,7 @@ body {
 .grid-text-rechts-unten { grid-area: text-unten; }
 
 
-/* ... Restliche Stile (Grid-Box, Relief-Styling, Textbox-Styling) unverändert ... */
+/* Allgemeine Styles für alle Bereiche im Grid */
 .grid-box {
     padding: 0;
     border-radius: 4px;
@@ -73,7 +119,7 @@ body {
     justify-content: center; 
 }
 
-/* ... Spezifische Formatierung für Gebrauchsanleitung (bleibt stabil) ... */
+/* Spezifische Formatierung für Gebrauchsanleitung */
 .grid-titel-anweisung-links .text-box-inner {
     border: 2px solid #4e342e; 
     padding: 15px; 
@@ -83,4 +129,56 @@ body {
     align-items: center;
     overflow: auto; 
 }
-/* ... */
+
+.grid-titel-anweisung-links .text-box-inner h3 {
+    font-size: 1.1em; 
+    margin-top: 0; 
+    margin-bottom: 10px; 
+    border-bottom: 1px solid #916341; 
+    padding-bottom: 3px;
+}
+
+.grid-titel-anweisung-links .text-box-inner p {
+    font-size: 0.9em; 
+    line-height: 1.4;
+    margin-top: 5px;
+    margin-bottom: 5px; 
+}
+
+/* Styling der Relief-Elemente und Textboxen (unverändert) */
+.relief-rahmen-grid {
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    text-decoration: none; 
+    padding: 0; 
+    cursor: pointer;
+    background-color: #916341; 
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); 
+    transition: all 0.2s ease-in-out;
+    height: 100%; 
+    width: 100%; 
+    box-sizing: border-box;
+}
+
+.relief-thumbnail-grid {
+    width: 90%; 
+    height: 100%;
+    object-fit: contain; 
+    border: 1px solid #4e342e;
+}
+
+.text-box-inner {
+    padding: 10px;
+    background-color: #b5886d; 
+    border: none;
+    height: 100%; 
+    width: 100%; 
+    overflow: auto; 
+    color: #4e342e; 
+}
+
+.text-box-inner h2, .text-box-inner h3 {
+    color: #4e342e;
+    border-bottom-color: #4e342e;
+}
