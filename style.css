@@ -1,37 +1,48 @@
-/* Globale Stile und Typografie (Unverändert) */
+/* Globale Stile und Typografie */
 body {
     font-family: 'Times New Roman', Times, serif;
-    background-color: #f8f8f4;
+    background-color: #f8f8f4; /* Hellster Hintergrund (unseres Schemas nicht betroffen) */
+    /* FIX: Helle Schriftfarbe für den dunklen Header-Bereich */
     color: #4e342e;
     line-height: 1.6;
     margin: 0;
     padding: 0;
 }
 
+/* FIX: Schwarzer Text auf weißem Hintergrund durchgehend entfernt */
 h1, h2, h3 {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    color: #4e342e;
-    border-bottom: 2px solid #a0522d;
+    color: #4e342e; /* Dunkles Braun */
+    border-bottom: 2px solid #916341; /* Dunkle Grundfarbe */
     padding-bottom: 5px;
     margin-bottom: 15px;
 }
 
 header {
-    background-color: #edeae3;
+    /* FIX: Dunkle Farbe aus dem Schema */
+    background-color: #916341; 
     padding: 20px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* FIX: Text in der Kopfzeile ist WEISS */
+    color: white;
+}
+
+header h1 {
+    color: white;
+    border-bottom-color: white;
 }
 
 p, a {
-    color: #4e342e;
+    color: #4e342e; /* Dunkles Braun */
 }
 
-/* --- Styles für die Titelseite und Übersichten (Unverändert) --- */
+/* --- Styles für die Navigation --- */
 .nav-button {
     display: inline-block;
     padding: 12px 25px;
-    background-color: #795548;
+    /* FIX: Mittlere Akzentfarbe */
+    background-color: #b5886d; 
     color: white;
     text-decoration: none;
     font-size: 1.1em;
@@ -43,7 +54,7 @@ p, a {
 }
 
 .nav-button:hover {
-    background-color: #a0522d;
+    background-color: #916341; /* Dunkle Grundfarbe beim Hover */
 }
 
 .kompartiment-link {
@@ -52,8 +63,8 @@ p, a {
     align-items: center;
     width: 110px;
     height: 70px;
-    border: 1px solid #a0522d;
-    background-color: #fffdfa;
+    border: 1px solid #916341;
+    background-color: #d0a68d; /* Helle Akzentfarbe */
     color: #4e342e;
     text-decoration: none;
     font-size: 1.3em;
@@ -64,13 +75,13 @@ p, a {
 }
 
 .kompartiment-link:hover {
-    background-color: #a0522d;
+    background-color: #916341;
     color: white;
     transform: translateY(-2px);
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* --- NEUE STYLES FÜR DAS A4-QUERFORMAT-LAYOUT (Kompartiment-Seiten) --- */
+/* --- Layout für Kompartiment-Seiten --- */
 
 #kompartiment-container {
     padding: 20px;
@@ -79,35 +90,29 @@ p, a {
 }
 
 .kompartiment-a4-quer {
-    /* FIX: Höhe ist nicht mehr fix, sondern passt sich dem Inhalt an, bleibt aber quer-lastig */
     width: 950px; 
     max-width: 95vw;
-    height: auto; /* WICHTIG: Erlaubt dem Container, sich der Bildhöhe anzupassen */
-    min-height: 650px; /* Garantiert Mindesthöhe */
+    height: auto; 
+    min-height: 650px; 
     position: relative;
     padding: 30px;
-    background-color: #fffdfa;
-    border: 3px solid #795548;
+    /* FIX: Hellere Akzentfarbe für den "Papier"-Hintergrund */
+    background-color: #d0a68d; 
+    border: 3px solid #916341; 
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
 }
 
-.zurueck-button {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 0.9em;
+.zurueck-button a {
+    color: #4e342e;
 }
 
-
+/* --- Grid-Struktur (Layout-FIX aus dem letzten Schritt übernommen) --- */
 .kompartiment-grid {
     display: grid;
-    /* Spalten wie gewünscht */
     grid-template-columns: 2fr 3fr 2fr;
-    /* FIX: Reihenhöhe passt sich dem Inhalt (den Bildern) an */
     grid-template-rows: auto auto auto; 
     gap: 15px 25px; 
-    /* Die Höhe muss flexibel sein, damit die Bilder ihre wahre Größe zeigen */
     height: 100%; 
 }
 
@@ -115,71 +120,68 @@ p, a {
 .grid-box {
     padding: 0;
     border-radius: 4px;
-    border: 1px solid #c0b9a9; 
+    border: 1px solid #4e342e; /* Dunkles Braun als Rahmen */
     box-sizing: border-box;
-    /* FLEXBOX für Textzellen: Stellt sicher, dass der Text vertikal ausgerichtet werden kann, falls die Bilder variieren */
     display: flex;
     flex-direction: column;
     overflow: hidden; 
+    align-items: flex-start;
 }
 
 /* Linker Bereich: Titel und Gebrauchsanweisung */
 .grid-titel-anweisung-links {
     grid-area: 2 / 1 / 3 / 2; 
-    justify-content: center; /* Vertikal zentriert innerhalb der Zelle */
+    justify-content: center; 
     align-items: center;
     text-align: center;
 }
 
-/* Textfelder rechts: Ausrichtung der Inhalte innerhalb der Grid-Box */
-.grid-text-rechts-oben, .grid-text-rechts-mitte, .grid-text-rechts-unten {
-    justify-content: flex-start;
+.grid-titel-anweisung-links .text-box-inner {
+    /* FIX: Dunkle, gut sichtbare Farbe für den Rahmen der Hauptbox */
+    border: 2px solid #4e342e; 
 }
-
-/* Präzise Platzierung der Reliefs und rechten Textfelder in den 3 Zeilen (Unverändert) */
-.grid-relief-oben { grid-area: 1 / 2 / 2 / 3; }
-.grid-text-rechts-oben { grid-area: 1 / 3 / 2 / 4; }
-.grid-relief-mitte { grid-area: 2 / 2 / 3 / 3; }
-.grid-text-rechts-mitte { grid-area: 2 / 3 / 3 / 4; }
-.grid-relief-unten { grid-area: 3 / 2 / 4 / 3; }
-.grid-text-rechts-unten { grid-area: 3 / 3 / 4 / 4; }
 
 
 /* Styling der Relief-Elemente im Grid */
 .relief-rahmen-grid {
     display: flex; 
     justify-content: center;
-    align-items: center; 
-    text-decoration: none; 
+    align-items: flex-start; 
     border: none;
-    padding: 5px;
+    padding: 0; 
     cursor: pointer;
-    background-color: #f7f3ed;
+    /* FIX: Dunkle Grundfarbe als Hintergrund, falls das Bild nicht die ganze Zelle füllt */
+    background-color: #916341; 
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); 
     transition: all 0.2s ease-in-out;
-    height: 100%; 
+    height: auto; 
+    width: 100%; 
     box-sizing: border-box;
 }
 
 .relief-rahmen-grid:hover {
-    background-color: #f0ebe2;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    background-color: #b5886d; /* Mittlere Akzentfarbe beim Hover */
 }
 
 .relief-thumbnail-grid {
-    /* FIX: Bildbreite ist 100% der zugewiesenen Spalte */
     width: 100%; 
-    height: auto; /* FIX: Höhe ergibt sich automatisch aus dem Seitenverhältnis */
+    height: auto; 
     max-height: none; 
     object-fit: contain; 
-    border: 1px solid #795548;
+    border: 1px solid #4e342e;
 }
 
-/* Styling der Textboxen (Unverändert) */
+/* Styling der Textboxen */
 .text-box-inner {
     padding: 10px;
-    background-color: #fffdfa;
+    background-color: #d0a68d; /* Helle Akzentfarbe */
     border: none;
     height: 100%; 
+    width: 100%; 
     overflow: auto; 
+}
+
+.text-box-inner h2, .text-box-inner h3 {
+    color: #4e342e; /* Dunkles Braun für die Titel in den Boxen */
+    border-bottom-color: #4e342e;
 }
