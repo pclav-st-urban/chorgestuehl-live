@@ -63,19 +63,26 @@ p, a {
 }
 
 .kompartiment-a4-quer {
-    /* FIX: Breite bleibt für Querformat, Höhe wird jetzt vom Inhalt bestimmt */
+    /* WICHTIG: Setzt die Höhe wieder auf einen FIXEN Wert, um den Überhang zu verhindern */
     width: 950px; 
     max-width: 95vw;
-    height: auto; 
-    min-height: 650px; 
+    height: 650px; /* FIX: Feste Höhe, um Scrollen auf dem Hauptdokument zu vermeiden */
     position: relative;
     padding: 30px;
     background-color: #b5886d; /* Hintergrund 3: Hellbraun-Mittel */
     border: 3px solid #4e342e; /* Hintergrund 1: Dunkelbraun */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
+    overflow: hidden; /* Verhindert das Rausragen über den Rahmen */
 }
 
+.zurueck-button {
+    position: absolute;
+    /* FIX: Button-Position nach links oben in die Ecke verschoben (innerhalb des Paddings) */
+    top: 5px; 
+    left: 5px;
+    font-size: 0.9em;
+}
 .zurueck-button a {
     color: #4e342e;
 }
@@ -83,15 +90,14 @@ p, a {
 /* --- Grid-Struktur --- */
 .kompartiment-grid {
     display: grid;
-    /* Spaltenbreiten: Gleichmäßiger 2:3:2-Verhältnis */
     grid-template-columns: 2fr 3fr 2fr;
-    /* FIX: Reihenhöhen proportional, um das mittlere Relief doppelt so hoch zu machen */
     grid-template-rows: 1fr 2fr 1fr; 
     gap: 15px 25px; 
-    height: 100%; 
+    /* FIX: Die Höhe des Grids muss den Platz unter dem Button nutzen. */
+    height: calc(100% - 30px); /* 30px für den Platz über dem obersten Relief (unter dem Button) */
 }
 
-/* Allgemeine Styles für alle Bereiche im Grid */
+/* Allgemeine Styles für alle Bereiche im Grid (unverändert) */
 .grid-box {
     padding: 0;
     border-radius: 4px;
@@ -100,7 +106,7 @@ p, a {
     display: flex;
     flex-direction: column;
     overflow: hidden; 
-    align-items: center; /* Zentriert alles in der Zelle */
+    align-items: center;
     justify-content: center;
 }
 
@@ -112,7 +118,6 @@ p, a {
     border: 2px solid #4e342e; 
     padding: 20px;
     width: 90%;
-    /* FIX: Höhe ändert sich nicht, wird vom Grid erzwungen */
     height: 90%; 
     justify-content: center;
     align-items: center;
@@ -135,33 +140,29 @@ p, a {
     text-decoration: none; 
     padding: 0; 
     cursor: pointer;
-    background-color: #916341; /* Hintergrund 2: Mittelbraun */
+    background-color: #916341; 
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); 
     transition: all 0.2s ease-in-out;
-    /* FIX: Muss die volle Höhe der Zelle einnehmen */
     height: 100%; 
     width: 100%; 
     box-sizing: border-box;
 }
 
 .relief-thumbnail-grid {
-    /* FIX: Breite wird auf 90% gesetzt, um den Rahmen zu betonen */
     width: 90%; 
-    /* FIX: Höhe ist 100% der Zelle, wird aber durch object-fit: contain skaliert */
     height: 100%;
-    object-fit: contain; /* Erhält das Seitenverhältnis */
+    object-fit: contain; 
     border: 1px solid #4e342e;
 }
 
 /* Styling der Textboxen */
 .text-box-inner {
     padding: 10px;
-    background-color: #b5886d; /* Hintergrund 3: Hellbraun-Mittel */
+    background-color: #b5886d; 
     border: none;
     height: 100%; 
     width: 100%; 
     overflow: auto; 
-    /* WICHTIG: Textfarbe im Inneren der hellen Boxen ist dunkel */
     color: #4e342e; 
 }
 
