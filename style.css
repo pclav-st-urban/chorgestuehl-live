@@ -1,8 +1,8 @@
-/* Globale Stile und Typografie (Farben unverändert) */
+/* Globale Stile und Typografie */
 body {
     font-family: 'Times New Roman', Times, serif;
-    background-color: #e5d7cf;
-    color: #4e342e;
+    background-color: #e5d7cf; /* Hintergrund 4: Sehr Hellbraun */
+    color: #4e342e; /* Hintergrund 1: Dunkelbraun für Text auf hellem Grund */
     line-height: 1.6;
     margin: 0;
     padding: 0;
@@ -15,13 +15,55 @@ h1, h2, h3 {
     padding-bottom: 5px;
     margin-bottom: 15px;
 }
-/* ... weitere allgemeine Stile unverändert ... */
+
+header {
+    background-color: #916341; /* Hintergrund 2: Mittelbraun */
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: white; /* Schriftfarbe WEISS */
+}
+
+header h1 {
+    color: white;
+    border-bottom-color: white;
+}
+
+p, a {
+    color: #4e342e;
+}
+
+/* --- Navigation (muss für Eingangsblatt funktionieren) --- */
+.nav-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #b5886d; /* Hintergrund 3: Hellbraun-Mittel */
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.nav-button:hover {
+    background-color: #916341; 
+}
+/* ... weitere Navigations-Stile ... */
 
 
-/* --- Layout für Kompartiment-Seiten --- */
+/* --- Layout für Kompartiment-Seiten (Stabilität Fixiert) --- */
+
+#kompartiment-container {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
 
 .kompartiment-a4-quer {
-    /* ... unverändert ... */
+    /* FIX: Feste Höhe, um Überhang und Scrollen des Blattes zu verhindern */
     width: 950px; 
     max-width: 95vw;
     height: 650px; 
@@ -31,21 +73,31 @@ h1, h2, h3 {
     border: 3px solid #4e342e; 
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
-    overflow: hidden; 
+    overflow: hidden; /* Verhindert das Rausragen über den Rahmen */
 }
 
-/* ... Zurück-Button und Grid-Struktur unverändert ... */
+.zurueck-button {
+    position: absolute;
+    top: 5px; 
+    left: 5px;
+    font-size: 0.9em;
+}
+.zurueck-button a {
+    color: #4e342e;
+}
 
 /* --- Grid-Struktur --- */
 .kompartiment-grid {
     display: grid;
     grid-template-columns: 2fr 3fr 2fr;
-    grid-template-rows: 1fr 2fr 1fr; /* Wichtig: Beibehaltung des 1:2:1-Verhältnisses */
+    /* FIX: Proportionale Reihenhöhen für das 1:2:1 Bildverhältnis */
+    grid-template-rows: 1fr 2fr 1fr; 
     gap: 15px 25px; 
+    /* FIX: Höhe muss den Platz unter dem Button nutzen */
     height: calc(100% - 30px); 
 }
 
-/* Allgemeine Styles für alle Bereiche im Grid (unverändert) */
+/* Allgemeine Styles für alle Bereiche im Grid */
 .grid-box {
     padding: 0;
     border-radius: 4px;
@@ -64,13 +116,60 @@ h1, h2, h3 {
 }
 .grid-titel-anweisung-links .text-box-inner {
     border: 2px solid #4e342e; 
-    padding: 15px; /* Padding leicht reduziert */
+    padding: 20px;
     width: 90%;
-    /* FIX: Höhe ist 100% der zugewiesenen Grid-Zelle (mittlere Reihe) */
-    height: 100%; 
+    /* FIX: Diese Höhe war stabil. Wir kehren zurück, um Chaos zu verhindern */
+    height: 90%; 
     justify-content: center;
     align-items: center;
-    overflow: auto; /* Behält Scrollen als Notfall-Lösung */
+    /* Sollte bei so kurzem Text nicht scrollen. */
+    overflow: auto; 
 }
 
-/* ... Restliche Stile (Reliefs und rechte Textboxen) unverändert ... */
+/* Platzierung der Reliefs und rechten Textfelder (unverändert) */
+.grid-relief-oben { grid-area: 1 / 2 / 2 / 3; }
+.grid-text-rechts-oben { grid-area: 1 / 3 / 2 / 4; }
+.grid-relief-mitte { grid-area: 2 / 2 / 3 / 3; }
+.grid-text-rechts-mitte { grid-area: 2 / 3 / 3 / 4; }
+.grid-relief-unten { grid-area: 3 / 2 / 4 / 3; }
+.grid-text-rechts-unten { grid-area: 3 / 3 / 4 / 4; }
+
+
+/* Styling der Relief-Elemente im Grid */
+.relief-rahmen-grid {
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    text-decoration: none; 
+    padding: 0; 
+    cursor: pointer;
+    background-color: #916341; 
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); 
+    transition: all 0.2s ease-in-out;
+    height: 100%; 
+    width: 100%; 
+    box-sizing: border-box;
+}
+
+.relief-thumbnail-grid {
+    width: 90%; 
+    height: 100%;
+    object-fit: contain; 
+    border: 1px solid #4e342e;
+}
+
+/* Styling der Textboxen */
+.text-box-inner {
+    padding: 10px;
+    background-color: #b5886d; 
+    border: none;
+    height: 100%; 
+    width: 100%; 
+    overflow: auto; 
+    color: #4e342e; 
+}
+
+.text-box-inner h2, .text-box-inner h3 {
+    color: #4e342e;
+    border-bottom-color: #4e342e;
+}
