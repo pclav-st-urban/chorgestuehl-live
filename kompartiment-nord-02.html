@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chorgestühl Nord - Kompartiment 2</title>
+
     <style>
-        /* CSS INTERN HIER DEFINIERT, UM SYNCHRONISATIONSFEHLER ZU VERMEIDEN */
-        
         /* Globale Stile und Typografie */
         body {
             font-family: 'Times New Roman', Times, serif;
@@ -61,7 +60,7 @@
             background-color: #916341; 
         }
 
-        /* --- Layout für Kompartiment-Seiten --- */
+        /* --- Layout für Kompartiment-Seiten (Container und Rahmen) --- */
 
         #kompartiment-container {
             padding: 20px;
@@ -92,105 +91,42 @@
             color: #4e342e;
         }
 
-        /* --- Grid-Struktur (ULTRA-STABIL) --- */
-        .kompartiment-grid {
-            display: grid;
-            grid-template-columns: 2fr 3fr 2fr;
-            grid-template-areas:
-                "leer relief-oben text-oben"
-                "anweisung relief-mitte text-mitte"
-                "leer relief-unten text-unten";
-            grid-template-rows: 1fr 2fr 1fr; 
-            gap: 15px 25px; 
-            height: 100%; /* FIX: Verhindert den Grid-Kollaps */
-        }
-
-        /* Zuweisung der Bereiche zu den Grid-Area-Namen */
-        .grid-titel-anweisung-links { grid-area: anweisung; }
-        .grid-relief-oben { grid-area: relief-oben; }
-        .grid-text-rechts-oben { grid-area: text-oben; }
-        .grid-relief-mitte { grid-area: relief-mitte; }
-        .grid-text-rechts-mitte { grid-area: text-mitte; }
-        .grid-relief-unten { grid-area: relief-unten; }
-        .grid-text-rechts-unten { grid-area: text-unten; }
-
-
-        /* Allgemeine Styles für alle Bereiche im Grid */
-        .grid-box {
-            padding: 0;
-            border-radius: 4px;
-            border: 1px solid #4e342e; 
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden; 
-            align-items: center;
-            justify-content: center; 
-        }
-
-        /* Spezifische Formatierung für Gebrauchsanleitung */
-        .grid-titel-anweisung-links .text-box-inner {
-            border: 2px solid #4e342e; 
-            padding: 15px; 
-            width: 90%;
-            height: 98%; 
-            justify-content: center;
-            align-items: center;
-            overflow: auto; 
-        }
-
-        .grid-titel-anweisung-links .text-box-inner h3 {
-            font-size: 1.1em; 
-            margin-top: 0; 
-            margin-bottom: 10px; 
-            border-bottom: 1px solid #916341; 
-            padding-bottom: 3px;
-        }
-
-        .grid-titel-anweisung-links .text-box-inner p {
-            font-size: 0.9em; 
-            line-height: 1.4;
-            margin-top: 5px;
-            margin-bottom: 5px; 
-        }
-
-        /* Styling der Relief-Elemente und Textboxen */
-        .relief-rahmen-grid {
-            display: flex; 
-            justify-content: center;
-            align-items: center; 
-            text-decoration: none; 
-            padding: 0; 
-            cursor: pointer;
-            background-color: #916341; 
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); 
-            transition: all 0.2s ease-in-out;
-            height: 100%; 
-            width: 100%; 
-            box-sizing: border-box;
-        }
-
-        .relief-thumbnail-grid {
-            width: 90%; 
+        /* --- TABLE LAYOUT STILE --- */
+        .layout-table {
+            width: 100%;
             height: 100%;
-            object-fit: contain; 
+            border-collapse: collapse; /* Keine doppelten Linien */
+        }
+
+        .layout-cell {
+            padding: 10px;
             border: 1px solid #4e342e;
+            vertical-align: top;
+            box-sizing: border-box;
+            background-color: #b5886d; 
+        }
+
+        .relief-cell {
+            padding: 0;
+            background-color: #916341; /* Hintergrund für Relief-Zellen */
+            text-align: center;
         }
 
         .text-box-inner {
             padding: 10px;
-            background-color: #b5886d; 
-            border: none;
             height: 100%; 
             width: 100%; 
             overflow: auto; 
             color: #4e342e; 
         }
 
-        .text-box-inner h2, .text-box-inner h3 {
-            color: #4e342e;
-            border-bottom-color: #4e342e;
+        .relief-thumbnail-table {
+            max-width: 95%; 
+            max-height: 95%;
+            object-fit: contain; 
+            border: 1px solid #4e342e;
         }
+
     </style>
 </head>
 <body>
@@ -203,65 +139,81 @@
         <div class="kompartiment-a4-quer">
             <div class="zurueck-button"><a href="nord.html">← Zurück zur Nordflügel-Übersicht</a></div>
 
-            <div class="kompartiment-grid">
+            <table class="layout-table">
+                <colgroup>
+                    <col style="width: 20%;">
+                    <col style="width: 40%;">
+                    <col style="width: 40%;">
+                </colgroup>
                 
-                <div class="grid-box grid-titel-anweisung-links">
-                    <div class="text-box-inner"> 
-                        <h3>Gebrauchsanleitung</h3>
-                        <p>Vergrösserung: Bild anklicken oder antippen. Die grosse Foto lässt sich bis zur Wurmloch-Dimension vergrössern. Zurück zur Übersicht des Kompartiments: Löschen des Reiters/Tabulators bzw. mit «Zurück-Pfeil».</p>
-                        
-                        <p><strong>Ausführliche Anleitung:</strong> <a href="Gebrauchsanleitung.docx" target="_blank">Gebrauchsanleitung.docx</a></p>
-                    </div>
-                </div>
+                <tr style="height: 25%;">
+                    <td class="layout-cell" rowspan="3"></td> 
+                    
+                    <td class="layout-cell relief-cell">
+                        <a target="_blank"
+                             href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_1.tif/lossy-page1-5400px-CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_1.tif.jpg">
+                            <img class="relief-thumbnail-table" 
+                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_1.tif/lossy-page1-300px-CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_1.tif.jpg" 
+                                 alt="Thumbnail Relief Oben: Der Hauptmann zu Capernaum">
+                        </a>
+                    </td>
+                    
+                    <td class="layout-cell">
+                        <div class="text-box-inner">
+                            <h3>Der Hauptmann zu Capernaum</h3>
+                            <p>Erläuterung: Der Hauptmann bittet Jesus, seinen kranken Knecht zu heilen. Dies ist eine bekannte Szene, die für ihre Betonung des Glaubens wichtig ist.</p>
+                            <p><strong>→ Mehr dazu:</strong> [Link zum Hauptmann von Kapernaum]</p>
+                        </div>
+                    </td>
+                </tr>
 
-                <div class="grid-box grid-relief-oben">
-                    <a class="relief-rahmen-grid" target="_blank"
-                         href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_1.tif/lossy-page1-5400px-CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_1.tif.jpg">
-                        <img class="relief-thumbnail-grid" 
-                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_1.tif/lossy-page1-300px-CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_1.tif.jpg" 
-                             alt="Thumbnail Relief Oben: Der Hauptmann zu Capernaum">
-                    </a>
-                </div>
-                <div class="grid-box grid-text-rechts-oben">
-                    <div class="text-box-inner">
-                        <h3>Der Hauptmann zu Capernaum</h3>
-                        <p>Erläuterung: Der Hauptmann bittet Jesus, seinen kranken Knecht zu heilen. Dies ist eine bekannte Szene, die für ihre Betonung des Glaubens wichtig ist.</p>
-                        <p><strong>→ Mehr dazu:</strong> [Link zum Hauptmann von Kapernaum]</p>
-                    </div>
-                </div>
+                <tr style="height: 50%;">
+                    <td class="layout-cell relief-cell">
+                        <a target="_blank"
+                             href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_2.tif/lossy-page1-3900px-CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_2.tif.jpg">
+                            <img class="relief-thumbnail-table" 
+                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_2.tif/lossy-page1-300px-CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_2.tif.jpg" 
+                                 alt="Thumbnail Relief Mitte: Noah steigt in die Arche">
+                        </a>
+                    </td>
+                    
+                    <td class="layout-cell">
+                        <div class="text-box-inner">
+                            <h3>Noah steigt in die Arche</h3>
+                            <p>Erläuterung: Darstellung des Gehorsams und des Beginns der Rettung. Das Relief zeigt Noah, wie er mit seiner Familie und den Tieren in die Arche geht, um die Sintflut zu überleben.</p>
+                            <p><strong>→ Mehr dazu:</strong> [Link zu Noah und der Arche]</p>
+                        </div>
+                    </td>
+                </tr>
 
-                <div class="grid-box grid-relief-mitte">
-                    <a class="relief-rahmen-grid" target="_blank"
-                         href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_2.tif/lossy-page1-3900px-CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_2.tif.jpg">
-                        <img class="relief-thumbnail-grid" 
-                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_2.tif/lossy-page1-300px-CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_2.tif.jpg" 
-                             alt="Thumbnail Relief Mitte: Noah steigt in die Arche">
-                    </a>
-                </div>
-                <div class="grid-box grid-text-rechts-mitte">
-                    <div class="text-box-inner">
-                        <h3>Noah steigt in die Arche</h3>
-                        <p>Erläuterung: Darstellung des Gehorsams und des Beginns der Rettung. Das Relief zeigt Noah, wie er mit seiner Familie und den Tieren in die Arche geht, um die Sintflut zu überleben.</p>
-                        <p><strong>→ Mehr dazu:</strong> [Link zu Noah und der Arche]</p>
-                    </div>
-                </div>
+                <tr style="height: 25%;">
+                    <td class="layout-cell relief-cell">
+                        <a target="_blank"
+                             href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_3.tif/lossy-page1-5400px-CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_3.tif.jpg">
+                            <img class="relief-thumbnail-table" 
+                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_3.tif/lossy-page1-300px-CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_3.tif.jpg" 
+                                 alt="Thumbnail Relief Unten: Der Einzug Jesu in Jerusalem">
+                        </a>
+                    </td>
+                    
+                    <td class="layout-cell">
+                        <div class="text-box-inner">
+                            <h3>Der Einzug Jesu in Jerusalem</h3>
+                            <p>Erläuterung: Die Darstellung der festlichen Ankunft Jesu, bekannt als Palmsonntag. Dieses Relief zeigt den Beginn der Passion und ist ein wichtiges Element der Ostergeschichte.</p>
+                            <p><strong>→ Mehr dazu:</strong> [Link zum Einzug in Jerusalem]</p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
 
-                <div class="grid-box grid-relief-unten">
-                    <a class="relief-rahmen-grid" target="_blank"
-                         href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_3.tif/lossy-page1-5400px-CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_3.tif.jpg">
-                        <img class="relief-thumbnail-grid" 
-                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_3.tif/lossy-page1-300px-CH-NB_Saint_Urban%27s_Abbey_EAD-DRESS-21_3.tif.jpg" 
-                             alt="Thumbnail Relief Unten: Der Einzug Jesu in Jerusalem">
-                    </a>
-                </div>
-                <div class="grid-box grid-text-rechts-unten">
-                    <div class="text-box-inner">
-                        <h3>Der Einzug Jesu in Jerusalem</h3>
-                        <p>Erläuterung: Die Darstellung der festlichen Ankunft Jesu, bekannt als Palmsonntag. Dieses Relief zeigt den Beginn der Passion und ist ein wichtiges Element der Ostergeschichte.</p>
-                        <p><strong>→ Mehr dazu:</strong> [Link zum Einzug in Jerusalem]</p>
-                    </div>
+            <div style="position: absolute; top: 15%; left: 35px; width: 17%; height: 70%;" class="layout-cell">
+                <div class="text-box-inner">
+                    <h3>Gebrauchsanleitung</h3>
+                    <p>Vergrösserung: Bild anklicken oder antippen. Die grosse Foto lässt sich bis zur Wurmloch-Dimension vergrössern. Zurück zur Übersicht des Kompartiments: Löschen des Reiters/Tabulators bzw. mit «Zurück-Pfeil».</p>
+                    <p><strong>Ausführliche Anleitung:</strong> <a href="Gebrauchsanleitung.docx" target="_blank">Gebrauchsanleitung.docx</a></p>
                 </div>
             </div>
+
         </div>
     </div>
 </body>
